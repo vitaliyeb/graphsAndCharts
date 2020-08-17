@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -63,7 +64,11 @@ async function returnProgectConfig (){
           }),
           new HtmlWebpackPlugin({
               template: `./public/index.html`,
-            })
+            }),
+          new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+          })
       ],
       devServer: {
         contentBase: path.join(__dirname, 'build'),
@@ -71,6 +76,7 @@ async function returnProgectConfig (){
       }
   }
 }
+
 
 
 module.exports = async (el)=>{

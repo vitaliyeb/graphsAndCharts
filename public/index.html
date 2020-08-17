@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graphs and charts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p>hello world !!!</p>
+    <div class="charts charts-graphs">
+        <p class="charts-graphs__subheading">Источник клиентов</p>
+        <div class="charts__wrapper">
+            <canvas> </canvas>
+            <ul class="charts__list">
+                <li data-percent='57' style="--bg-c: #76BB5E" data-color='#76BB5E'>Ссылки <span>57%</span></li>
+                <li data-percent='25' style="--bg-c: #D95E40" data-color='#D95E40'>Поиск <span>25%</span></li> 
+                <li data-percent='18' style="--bg-c: #F0CA4C" data-color='#F0CA4C'>РК <span>18%</span></li> 
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
