@@ -7,15 +7,20 @@
             set: (newAngle) => this._angle+=Math.PI/50*newAngle,
             get: () => this._angle
         });
-        return (newAngle, color)=>{
-            console.log(newAngle);
+        this.arcCenter = (r, color)=> {
+            context.beginPath();
+            context.fillStyle = color;
+            context.arc(posX, posY, r, 0, Math.PI*2);
+            context.fill();
+        };
+        this.renderPart = (newAngle, color)=>{
             context.beginPath();
             context.fillStyle = color;
             context.moveTo(posX, posY);
             context.arc(posX, posY, r, this.angle, (()=>this.angle)(this.angle = newAngle));
             context.closePath();
             context.fill();
-        }
+        };
     }
 
     let allArcСharts = $('.charts');
@@ -32,8 +37,8 @@
         let context = canvas.getContext('2d');
         let currentArc = new createArcСhart(context, canvasSize/2, canvasSize/2, canvasSize/2);
 
-        listItems.map((ind, el)=> currentArc($(el).attr('data-percent'), $(el).attr('data-color')));
-
+        listItems.map((ind, el)=> currentArc.renderPart($(el).attr('data-percent'), $(el).attr('data-color')));
+        currentArc.arcCenter(33, '#fff');
     });
 
 })()
