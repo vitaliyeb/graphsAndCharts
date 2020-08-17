@@ -30,6 +30,64 @@
                 margin-left: auto  
         
 
-// .graphs
-//     &__canvas 
-//         border: 1px solid #000
+.graphs
+    &__period
+        display: flex
+        justify-content: space-between
+        & > p 
+            font-size: 12px 
+            font-weight: bold
+            color: #767676
+    &__info 
+        &-wrapper
+            display: flex
+            justify-content: space-between
+        &-all 
+            & > div  
+                font-size: 12px 
+                font-weight: bold
+                display: flex
+                align-items: flex-start
+                & > p 
+                    margin-top: 5px
+                    margin-right: 12px
+                & > span 
+                    font-weight: 400 
+                    font-size: 36px     
+            & > span 
+                display: block
+                text-align: right 
+                padding-right: 4px
+                color: #048520 
+    &__difference
+        &-count 
+            margin-left: auto
+            font-weight: bold
+        &-value 
+            margin-left: 8px
+        &-text   
+            font-size: 16px
+            font-weight: 400 
+            width:  180px
+            display: flex
+            align-items: center
+            margin-bottom: 7px
+            &:before
+                content: ''
+                width: 15px 
+                height 15px 
+                display: block 
+                margin-right: 10px
+            &_active 
+                & ^[-2]-value
+                    color: #048520
+                &:before 
+                    background-color:  #048520   
+            &_dont-active 
+                & ^[-2]-value
+                    color: #D95E40
+                &:before 
+                    background-color:  #D95E40           
+
+
+             
