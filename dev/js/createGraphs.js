@@ -3,15 +3,15 @@
 (()=>{
 
     function createGraphs(context, canvasWidth, canvasHeight, {division, graphs}){
+        this.divisionValue = [];
         this.paintCoordinate = (index)=> {
             let coordinates = graphs[index];
-            let steepX = canvasWidth / coordinates['coordinates'].length;
+            let steepX = canvasWidth / (coordinates['coordinates'].length-1);
             console.log(steepX);
             let steepY = canvasHeight/ Math.max(...division);
             context.beginPath();
             context.lineWidth = 2;
             context.strokeStyle = coordinates['color'];
-
             coordinates['coordinates'].map(([x, y])=>context.lineTo(x*steepX, y*steepY));
             context.stroke();
         };
@@ -20,6 +20,12 @@
             division.reverse().map((el, index) => this.paintHorizontaleLine(indentSize*index+1, el, '#D2D2D2'));
             this.paintHorizontaleLine(canvasHeight-1, '', '#D2D2D2')
         };
+        this.paintDivisionValue = () => {
+            this.divisionValue.map(([el, x, y])=>{
+                context.font = 'bold 12px cursive';
+                context.fillText( el, x, y);
+            });
+        };
         this.paintHorizontaleLine = (y, el, color)=>{
             context.beginPath();
             context.lineWidth = 1;
@@ -27,8 +33,7 @@
             context.moveTo(0, y);
             context.lineTo(canvasWidth, y);
             context.stroke();
-            context.font = 'bold 12px cursive';
-            context.fillText( el, 0, y+14);
+            this.divisionValue.push([el, 0, y+14])
         }
 
     }
@@ -61,6 +66,7 @@
 
         field.divisionField();
         graphsData.graphs.map((el, i)=>field.paintCoordinate(i));
+        field.paintDivisionValue();
         
 
 
