@@ -12,6 +12,7 @@ async function returnProgectConfig (){
   return {
       entry: './dev/common.js',
       watch: true,
+      mode: 'production',
       output: {
           path: path.resolve(__dirname, 'build'),
           filename: 'bundle.js'

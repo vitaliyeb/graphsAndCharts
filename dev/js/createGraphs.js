@@ -7,12 +7,11 @@
         this.paintCoordinate = (index)=> {
             let coordinates = graphs[index];
             let steepX = canvasWidth / (coordinates['coordinates'].length-1);
-            console.log(steepX);
             let steepY = canvasHeight/ Math.max(...division);
             context.beginPath();
             context.lineWidth = 2;
             context.strokeStyle = coordinates['color'];
-            coordinates['coordinates'].map(([x, y])=>context.lineTo(x*steepX, y*steepY));
+            coordinates['coordinates'].map(([x, y])=>context.lineTo(x*steepX, y*steepY+1));
             context.stroke();
         };
         this.divisionField = ()=> {
@@ -35,7 +34,6 @@
             context.stroke();
             this.divisionValue.push([el, 0, y+14])
         }
-
     }
 
     let graphsData = {
